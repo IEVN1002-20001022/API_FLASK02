@@ -1,0 +1,18 @@
+
+    {% extends "layout.html" %}
+        {% block container%}
+
+
+    <h1>Hola mundo</h1>
+    <h2>{{title}}</h2>
+    {% for elemento in listado %}
+    <p>{{elemento}}</p>
+    {% endfor %}
+
+    {% if usuario %}
+    <h3>Usuario: {{title}}</h3>
+    {% else %}
+    <h3>No hay usuarios</h3>
+    {% endif %}
+
+    {%endblock%}
