@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+import math
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -8,12 +9,39 @@ def index():
     listado =  ['Python', 'Flask', 'Jinja2', 'HTML', 'CSS']
     return render_template('index.html', titulo=titulo, listado=listado)
 
-@app.route('/calculos')
+@app.route('/calculos', methods=['GET','POST'])
 def about():
+    if request.method == 'POST':
+        numero1 = request.form['numero1']
+        numero2 = request.form['numero2']
+        operacion = request.form['operacion']
+
+        if operacion == 'suma':
+            res = int(numero1) + int(numero2)
+        if operacion == 'resta':
+            res = int(numero1) - int(numero2)
+        if operacion == 'multiplicacion':
+            res = int(numero1) * int(numero2)
+        if operacion == 'division':
+            res = int(numero1) / int(numero2)
+
+        return render_template('calculos.html', operacion=operacion, res=res, numero1=numero1, numero2=numero2)
     return render_template('calculos.html')
 
-@app.route('/distancia')
+@app.route('/distancia', methods=['GET','POST'])
 def distancia():
+    if request.method == 'POST':
+        numero1 = request.form['numero1']
+        numero2 = request.form['numero2']
+        numero3 = request.form['numero3']
+        numero4 = request.form['numero4']
+        operacion = request.form['operacion']
+
+        if operacion == 'distancia':
+            res = math.sqrt((int(numero2) - int(numero1))**2 + (int(numero4) - int(numero3))**2)
+
+
+        return render_template('distancia.html', operacion=operacion, res=res, numero1=numero1, numero2=numero2, numero3=numero3,  numero4=numero4)
     return render_template('distancia.html')
 
 @app.route('/user/<string:user>')
