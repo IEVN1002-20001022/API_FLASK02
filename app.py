@@ -1,4 +1,5 @@
 import math
+import forms
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
@@ -43,6 +44,21 @@ def distancia():
 
         return render_template('distancia.html', operacion=operacion, res=res, numero1=numero1, numero2=numero2, numero3=numero3,  numero4=numero4)
     return render_template('distancia.html')
+
+@app.route('/Alumnos', methods=['GET','POST'])
+def alumnos():
+    mat=0
+    nom=""
+    ape=""
+    email=""
+    alumno_clas = forms.UserForm(request.form)
+    if request.method == 'POST' and alumno_clas.validate():
+        mat=alumno_clas.matricula.data
+        nom=alumno_clas.nombre.data
+        ape=alumno_clas.apellido.data
+        email=alumno_clas.correo.data
+        
+    return render_template('alumnos.html', form=alumno_clas, mat=mat, nom=nom, ape=ape, email=email)
 
 @app.route('/user/<string:user>')
 def user(user):
