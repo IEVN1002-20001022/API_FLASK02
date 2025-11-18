@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% import "_macros.html" as dato_macro %}
+{% block container %}
+
+<h1>Operaciones básicas</h1>
+
+<form action="/calculos" method="POST">
+    {{ dato_macro.datos('numero1', 'Ingrese el número 1') }}
+    {{ dato_macro.datos('numero2', 'Ingrese el número 2') }}
+
+    <div class="mb-3">
+        <label for="opcion" class="form-label">Operación</label>
+        <select class="form-select" name="opcion" id="opcion">
+            <option value="suma">Suma</option>
+            <option value="resta">Resta</option>
+            <option value="multiplicacion">Multiplicación</option>
+            <option value="division">División</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular</button>
+</form>
+
+{% if res is defined %}
+  <h2>{{opcin}} de: {{ numero1 }} y {{ numero2 }} = {{ res }}</h2>
+{% endif %}
+
+{% endblock %}

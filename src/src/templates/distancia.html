@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<h1>Calcular distancia entre dos puntos</h1>
+
+<form action="/distancia" method="POST">
+    <div class="mb-3">
+        <label>X1:</label>
+        <input type="number" step="any" name="x1" required>
+    </div>
+    <div class="mb-3">
+        <label>Y1:</label>
+        <input type="number" step="any" name="y1" required>
+    </div>
+    <div class="mb-3">
+        <label>X2:</label>
+        <input type="number" step="any" name="x2" required>
+    </div>
+    <div class="mb-3">
+        <label>Y2:</label>
+        <input type="number" step="any" name="y2" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Calcular distancia</button>
+</form>
+
+{% if disRes is not none %}
+  <h2>La distancia entre los puntos es: {{ disRes }}</h2>
+{% endif %}
+
+{% endblock %}

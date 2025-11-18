@@ -3,8 +3,9 @@ class DevelopmentConfig:
     MYSQL_HOST = 'localhost'
     MYSQL_USER = 'santiago'
     MYSQL_PASSWORD = 'root'
-    MYSQL_DB = 'api_utl'
+    MYSQL_DB = 'escuela'
+    MYSQL_UNIX_SOCKET = '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock'
 
-    config={
-        'development':DevelopmentConfig,
-    }
+config = {
+    'development': DevelopmentConfig
+}
