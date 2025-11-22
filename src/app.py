@@ -5,7 +5,8 @@ from flask_cors import CORS
 from config import config
  
 app = Flask(__name__)
- 
+
+CORS(app, resources={r"/alumnos/*": {"origins": "http://localhost:4200"}})
 conexion = MySQL(app)
 
 @app.route('/test')
